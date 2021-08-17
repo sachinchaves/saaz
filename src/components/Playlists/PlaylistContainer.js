@@ -7,6 +7,7 @@ const PlaylistContainer = styled.TouchableOpacity`
   backgroundColor: #ffffff;
   padding-right: 10px;
   margin-bottom: 10px;
+  border: 1px solid #c0c0c0;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.5)
   flexDirection: row
   align-items: center;

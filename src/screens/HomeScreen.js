@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   FlatList,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import { SearchBar } from "react-native-elements";
 import Carousel from 'react-native-snap-carousel';
 
 import Spacer from '../components/commonStyles/Spacer';
@@ -16,6 +17,8 @@ import CarouselSlider from '../components/Carousel/CarouselSlider';
 import Playlist from '../components/Playlists/Playlist';
 
 const App = props => {
+
+  const [value, setValue] = useState("");
 
   const navigation = props.navigation;
 
@@ -51,6 +54,19 @@ const App = props => {
   return (
     <SafeAreaView>
       <ScrollView>
+        <Spacer />
+        <SearchBar
+          platform="default"
+          lightTheme
+          onChangeText={newVal => setValue(newVal)}
+          onClearText={() => console.log(onClearText())}
+          placeholder="Search artist name"
+          placeholderTextColor="#888"
+          cancelButtonTitle="Cancel"
+          cancelButtonProps={{}}
+          onCancel={() => console.log(onCancel())}
+          value={value}
+        />
         <Spacer />
         <SectionTitle>New Releases</SectionTitle>
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', }}>
