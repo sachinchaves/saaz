@@ -1,8 +1,9 @@
-import * as React from 'react';
-import TitleText from '../commonStyles/TitleText';
+import styled from 'styled-components';
 
-const FlatListTextBox = props => (
- <TitleText>{props.title}</TitleText>
-);
+const PlaylistTitle = styled.Text`
+  font-size: 14px;
+  font-weight: 500;
+  width: 90px;
+`;
 
-export default FlatListTextBox;
+export default PlaylistTitle;
