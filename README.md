@@ -11,4 +11,4 @@ npm i react-native-snap-carousel
 ```
 
 ## Design
-![Image](imgs/home.jpg) ![Image](imgs/playlist.jpg) ![Image](imgs/searchresults.jpg)
+![Image](imgs/saaz_img.jpg)
