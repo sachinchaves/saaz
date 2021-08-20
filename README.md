@@ -24,5 +24,5 @@ npm i react-native-snap-carousel
 [Spotify API](https://developer.spotify.com/documentation/web-api/)
 
 ## Contributors
-[Sachin](https://github.com/sachinchaves)
-[Azusa](https://github.com/azusazusak)
+* [Sachin](https://github.com/sachinchaves)
+* [Azusa](https://github.com/azusazusak)
