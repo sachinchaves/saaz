@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Spacer = styled.View`
-  height: 30px;
+  height: 20px;
 `;
 
 export default Spacer;

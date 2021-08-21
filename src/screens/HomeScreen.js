@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import SearchBar from "react-native-dynamic-search-bar";
 
 import Spacer from '../components/commonStyles/Spacer';
 import SectionTitle from '../components/commonStyles/SectionTitle';
@@ -41,7 +42,7 @@ const App = props => {
     },
   ];
 
-  const CarouselItemStyle = ({item}) => (
+  const CarouselItemStyle = ({ item }) => (
     <CarouselSlider
       image={item.image}
       title={item.title}
@@ -58,22 +59,29 @@ const App = props => {
       playlistTitle: 'Hot Hits Canada',
       image: require('../imgs/todaystophits.jpg'),
     },
-    {playlistTitle: 'Pop All Day', image: require('../imgs/todaystophits.jpg')},
+    { playlistTitle: 'Pop All Day', image: require('../imgs/todaystophits.jpg') },
     {
       playlistTitle: 'Best Pop Songs of 2020',
       image: require('../imgs/todaystophits.jpg'),
     },
   ];
 
-  const PlaylistItemStyle = ({item}) => (
+  const PlaylistItemStyle = ({ item }) => (
     <Playlist image={item.image} title={item.playlistTitle} />
   );
 
   return (
     <SafeAreaView>
       <ScrollView>
+        <Spacer />
+        <SearchBar
+          placeholder="Search artist name"
+          onPress={() => alert("onPress")}
+          onChangeText={(text) => console.log(text)}
+        />
+        <Spacer />
         <SectionTitle>New Releases</SectionTitle>
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
           <Carousel
             layout={'default'}
             ref={ref => (this.carousel = ref)}
@@ -86,9 +94,9 @@ const App = props => {
         <Spacer />
         <SectionTitle>Featured Playlists</SectionTitle>
         <FlatList
-          columnWrapperStyle={{justifyContent: 'space-between'}}
+          columnWrapperStyle={{ justifyContent: 'space-between' }}
           numColumns={2}
-          contentContainerStyle={{paddingRight: 10, paddingLeft: 10}}
+          contentContainerStyle={{ paddingRight: 10, paddingLeft: 10 }}
           data={PlaylistData1}
           renderItem={PlaylistItemStyle}
         />
