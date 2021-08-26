@@ -22,6 +22,7 @@ import Playlist from '../components/Playlists/Playlist';
 const App = props => {
   const [releaseData, setReleaseData] = useState([]);
   const [featured, setfeatured] = useState([]);
+  const [categories, setcategories] = useState([]);
   // const [val, setVal] = useState();
   // useEffect(() => {
   //   Linking.openURL(
@@ -38,7 +39,7 @@ const App = props => {
         {
           headers: {
             Authorization:
-              'Bearer BQCR2M7WuMankF5XrpI-JH0O3lfWYhLipZ6_77X-tGwqD41HW69vfqVsBEKsqfdR_UvaW8jxZxVWgutN01o',
+              'Bearer BQDRzwNNoK01ztn-A97pn3DeFaYVQK3TdKJkfO5OYDwTZhW24C7HxLKPVhhGfulZP162yEj5R5X4awa5vnw',
           },
         },
       );
@@ -53,16 +54,31 @@ const App = props => {
         {
           headers: {
             Authorization:
-              'Bearer BQCR2M7WuMankF5XrpI-JH0O3lfWYhLipZ6_77X-tGwqD41HW69vfqVsBEKsqfdR_UvaW8jxZxVWgutN01o',
+              'Bearer BQDRzwNNoK01ztn-A97pn3DeFaYVQK3TdKJkfO5OYDwTZhW24C7HxLKPVhhGfulZP162yEj5R5X4awa5vnw',
           },
         },
       );
       const result = await response.data;
       setfeatured(result.playlists.items);
-      console.log(result.playlists.items);
+      // console.log(result.playlists.items);
+    };
+    const getCategories = async () => {
+      const response = await axios.get(
+        'https://api.spotify.com/v1/browse/categories?country=CA&limit=6',
+        {
+          headers: {
+            Authorization:
+              'Bearer BQDRzwNNoK01ztn-A97pn3DeFaYVQK3TdKJkfO5OYDwTZhW24C7HxLKPVhhGfulZP162yEj5R5X4awa5vnw',
+          },
+        },
+      );
+      const result = await response.data;
+      setcategories(result.categories.items);
+      console.log(result.categories.items);
     };
     getRelease();
     getFeatured();
+    getCategories();
   }, []);
   const navigation = props.navigation;
 
@@ -114,7 +130,29 @@ const App = props => {
   ];
 
   const PlaylistItemStyle = ({item}) => (
-    <Playlist image={item.images[0].url} title={item.name} />
+    <Playlist
+      image={item.images[0].url}
+      title={item.name}
+      onPress={() =>
+        navigation.navigate('Tracks', {
+          id: item.id,
+        })
+      }
+    />
+  );
+
+  const PlaylistItemStyle2 = ({item}) => (
+    <Playlist
+      image={item.icons[0].url}
+      title={item.name}
+      onPress={() =>
+        navigation.navigate('Tracks', {
+          backdrop_path: item.backdrop_path,
+          title: item.title,
+          overview: item.overview,
+        })
+      }
+    />
   );
 
   return (
@@ -146,6 +184,15 @@ const App = props => {
           contentContainerStyle={{paddingRight: 10, paddingLeft: 10}}
           data={featured}
           renderItem={PlaylistItemStyle}
+        />
+        <Spacer />
+        <SectionTitle>All Categories</SectionTitle>
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-between'}}
+          numColumns={2}
+          contentContainerStyle={{paddingRight: 10, paddingLeft: 10}}
+          data={categories}
+          renderItem={PlaylistItemStyle2}
         />
       </ScrollView>
     </SafeAreaView>

@@ -4,7 +4,7 @@ import PlaylistThumb from './PlaylistThumb';
 import PlaylistTitle from './PlaylistTitle';
 
 const Playlist = props => (
-  <PlaylistContainer>
+  <PlaylistContainer onPress={props.onPress}>
     <PlaylistThumb source={{uri: props.image}} />
     <PlaylistTitle>{props.title}</PlaylistTitle>
   </PlaylistContainer>
