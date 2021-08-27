@@ -23,12 +23,8 @@ npm i axios
 ```
 git clone https://github.com/sachinchaves/saaz
 npm ci
-```
 To install pods for ios
-```
 cd ios
-```
-```
 pod install
 cd saaz
 npm start
