@@ -13,10 +13,10 @@ Saaz is a mobile app that allows you to browse Spotify's music tracks and playli
 
 ## Modules 
 ```
-npm install --save styled-components
+npm i --save styled-components
 npm i react-native-snap-carousel
 npm i react-native-dynamic-search-bar
-npm install axios
+npm i axios
 ```
 
 ## How to use
